@@ -27,7 +27,7 @@ class ELOMatch:
             if p.name == name:
                 return p.eloPost
             
-        return 1500;
+        return 9999;
 
     def getELOChange(self, name):
         for p in self.players:
@@ -74,20 +74,3 @@ class ELOMatch:
                     
             self.players[i].eloPost = self.players[i].eloPre + self.players[i].eloChange
 
-
-# match = ELOMatch()
-# match.addPlayer("Tony", 2, 1000)
-# match.addPlayer("David C", 3, 1000)
-# match.addPlayer("Anj", 1, 1000)
-# match.addPlayer("Seabass", 4, 1000)
-# match.addPlayer("Craig", 5, 1000)
-# match.addPlayer("Greg", 6, 1000)
-#
-# match.calculateELOs()
-# t = match.getELO("Tony")
-# print(f'{match.getELO("Anj")}')
-# print(f'{match.getELO("Tony")}')
-# print(f'{match.getELO("David C")}')
-# print(f'{match.getELO("Seabass")}')
-# print(f'{match.getELO("Craig")}')
-# print(f'{match.getELO("Greg")}')

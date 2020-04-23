@@ -1,7 +1,7 @@
 from python.elo import ELOMatch, ELOPlayer
 import re, datetime
 
-players = ["jules0821", "boltar", "dastica", "Seba", "fliptable", "greg_jed"]
+players = ["jules0821", "boltar", "dastica", "Seba", "fliptable", "greg_jed", "MissDeal", "dmz", "Michael_888"]
 ratings = {}
 for i in players:
     ratings[i] = 1000
@@ -17,16 +17,18 @@ record = game_file.read()
 place = 0
 
 def print_elos(ratings):
-    for k,v in ratings.items():
-        print(f'{k}\t{v}', end='\t')
+    for k, v in ratings.items():
+        print(f'{k:<10}\t{v:>5d}', end='\t')
     print()
-def update_elos(elo_match, old_ratings):
-    new_ratings = {}
 
-#    for p in elo_match.players:
-#        new_ratings[p.name] = match.getELO(p.name)
-    for key in old_ratings:
-        new_ratings[key] = match.getELO(key)
+
+def update_elos(elo_match, old_ratings):
+    new_ratings = old_ratings
+
+    for p in elo_match.players:
+        new_ratings[p.name] = match.getELO(p.name)
+    #for key in old_ratings:
+    #    new_ratings[key] = elo_match.getELO(key)
     return new_ratings
 
 with open(path, 'r') as fp:
@@ -45,7 +47,7 @@ with open(path, 'r') as fp:
         if player_match:
             place = place + 1
             player_name = player_match.group()
-            # print(f"player {player_name}")
+            print(f"player {player_name}")
             match.addPlayer(player_name, place, ratings[player_name])
 
     # try:
